@@ -76,7 +76,10 @@ minim a = a
 
 -- helper function to "clean up" results a bit - evaluate operations where possible
 minimal :: Expr -> Expr
-minimal a = head (dropWhile (\x -> x /= (minim x) ) (iterate minim a))
+--minimal a = head (dropWhile (\x -> x /= (minim x) ) (iterate minim a))
+--minimal a = head (((dropWhile (\x -> x /= (minim x))) . (iterate minim)) a)
+--minimal a = (head . ((dropWhile (\x -> x /= (minim x))) . (iterate minim))) a
+minimal = head . ((dropWhile (\x -> x /= (minim x))) . (iterate minim))
 
 
 -- partial derivative of V
